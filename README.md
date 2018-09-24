@@ -5,6 +5,11 @@ To run (with self-signed SSL certificates):
 ```sh
 docker run -p 443:4430 -v jenkins_home:/var/jenkins_home suyashkumar/jenkins-ssl-docker
 ```
+##Generate Key
+openssl req -newkey rsa:2048 -x509 -nodes -keyout jenkins.key.full -new -out jenkins.pem -sha256 -days 3650
+###Convert key to Jenkins format
+openssl rsa -in  /var/lib/jenkins/cert/jenkins.key.full -out /var/lib/jenkins/cert/jenkins.key
+
 
 To run WITH the ability to have Jenkins build Docker containers within itself:
 ```sh
