@@ -11,7 +11,7 @@ docker run -p 443:4430 -v jenkins_home:/var/jenkins_home suyashkumar/jenkins-ssl
 ###Convert key to Jenkins format
  openssl rsa -in  /var/lib/jenkins/cert/jenkins.key.full -out /var/lib/jenkins/cert/jenkins.key
  
- docker run -d -p 8083:8083 -v jenkins:/var/lib/jenkins -v /var/run/docker.sock:/var/run/docker.sock jenkins_ssl
+ mkdir jenkins && docker run -d -p 8083:8083 -v jenkins:/var/lib/jenkins -v /var/run/docker.sock:/var/run/docker.sock jenkins_ssl
 
 
 To run WITH the ability to have Jenkins build Docker containers within itself:
