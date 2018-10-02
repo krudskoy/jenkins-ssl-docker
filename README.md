@@ -7,9 +7,13 @@ docker run -p 443:4430 -v jenkins_home:/var/jenkins_home suyashkumar/jenkins-ssl
 ```
 
 ##Generate Key
+ ```sh
  openssl req -newkey rsa:2048 -x509 -nodes -keyout jenkins.key.full -new -out jenkins.pem -sha256 -days 3650
-###Convert key to Jenkins format
+ ```
+##Convert key to Jenkins format
+ ```sh
  openssl rsa -in  /var/lib/jenkins/cert/jenkins.key.full -out /var/lib/jenkins/cert/jenkins.key
+ ```
  
  mkdir jenkins && docker run -d -p 8083:8083 -v ~/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins_ssl
 
